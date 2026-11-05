@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b52">
+  <title>Mercado do Tião | Controle do mercado</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Mercado do Tião, início">
+      <span class="brand-mark" aria-hidden="true">MT</span>
+      <span><strong>Mercado do Tião</strong><small>Controle do mercado</small></span>
+    </a>
+    <span class="local-badge"><span></span> Dados salvos neste dispositivo</span>
+  </header>
+
+  <main id="inicio" class="shell">
+    <section class="welcome">
+      <div><p class="eyebrow">PAINEL DO MERCADINHO</p><h1>Bom dia! 👋</h1><p class="welcome-copy">Acompanhe seus produtos e o movimento do caixa em um só lugar.</p></div>
+      <div class="today" id="today"></div>
+    </section>
+
+    <section class="summary-grid" aria-label="Resumo do mercado">
+      <article class="summary-card"><div class="summary-icon green">▦</div><div><p>Produtos cadastrados</p><strong id="product-total">0</strong></div></article>
+      <article class="summary-card"><div class="summary-icon amber">!</div><div><p>Estoque baixo</p><strong id="low-total">0</strong></div></article>
+      <article class="summary-card"><div class="summary-icon blue">R$</div><div><p>Saldo registrado</p><strong id="balance">R$ 0,00</strong></div></article>
+    </section>
+
+    <nav class="tabs" aria-label="Seções do painel">
+      <button class="tab active" data-tab="products">Produtos</button>
+      <button class="tab" data-tab="finance">Movimentações financeiras</button>
+    </nav>
+
+    <section class="panel" id="products-panel">
+      <div class="section-heading"><div><h2>Produtos</h2><p>Organize os itens e acompanhe as quantidades disponíveis.</p></div><button class="button primary" id="add-product">＋ Novo produto</button></div>
+      <div class="toolbar"><label class="search"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Buscar produto..." aria-label="Buscar produto"></label><span class="result-count" id="product-count">0 produtos</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Categoria</th><th>Quantidade</th><th>Preço de venda</th><th></th></tr></thead><tbody id="products-body"></tbody></table></div>
+      <div class="empty-state" id="products-empty"><span class="empty-icon">▦</span><h3>Nenhum produto por aqui</h3><p>Cadastre o primeiro item para começar a organizar seu estoque.</p><button class="button secondary" id="empty-add-product">＋ Cadastrar produto</button></div>
+    </section>
+
+    <section class="panel hidden" id="finance-panel">
+      <div class="section-heading"><div><h2>Movimentações financeiras</h2><p>Registre entradas e saídas para acompanhar o saldo informado.</p></div><button class="button primary" id="add-transaction">＋ Nova movimentação</button></div>
+      <div class="finance-summary"><div><span>Entradas</span><strong class="positive" id="income-total">R$ 0,00</strong></div><div><span>Saídas</span><strong class="negative" id="expense-total">R$ 0,00</strong></div><div><span>Saldo</span><strong id="finance-balance">R$ 0,00</strong></div></div>
+      <div class="table-wrap"><table><thead><tr><th>Descrição</th><th>Tipo</th><th>Data</th><th>Valor</th><th></th></tr></thead><tbody id="transactions-body"></tbody></table></div>
+      <div class="empty-state" id="finance-empty"><span class="empty-icon">R$</span><h3>Nenhuma movimentação registrada</h3><p>Adicione entradas e saídas para acompanhar o movimento financeiro.</p><button class="button secondary" id="empty-add-transaction">＋ Registrar movimentação</button></div>
+      <p class="note">Este painel é um controle simples. Os valores refletem somente as movimentações registradas aqui.</p>
+    </section>
+    <footer>Mercado do Tião <span>•</span> Controle simples para o dia a dia</footer>
+  </main>
+
+  <dialog id="product-dialog"><form id="product-form" method="dialog"><div class="dialog-heading"><div><p class="eyebrow">ESTOQUE</p><h2 id="product-dialog-title">Novo produto</h2></div><button type="button" class="close" data-close aria-label="Fechar">×</button></div><input type="hidden" id="product-id"><label>Nome do produto<input id="product-name" required maxlength="70" placeholder="Ex.: Arroz tipo 1"></label><div class="form-row"><label>Categoria<input id="product-category" maxlength="40" placeholder="Ex.: Mercearia"></label><label>Quantidade<input id="product-quantity" type="number" required min="0" step="1" value="0"></label></div><label>Preço de venda (R$)<input id="product-price" type="number" required min="0" step="0.01" placeholder="0,00"></label><div class="dialog-actions"><button type="button" class="button secondary" data-close>Cancelar</button><button class="button primary" value="save">Salvar produto</button></div></form></dialog>
+
+  <dialog id="transaction-dialog"><form id="transaction-form" method="dialog"><div class="dialog-heading"><div><p class="eyebrow">CAIXA</p><h2>Nova movimentação</h2></div><button type="button" class="close" data-close aria-label="Fechar">×</button></div><label>Descrição<input id="transaction-description" required maxlength="80" placeholder="Ex.: Compra de mercadorias"></label><div class="form-row"><label>Tipo<select id="transaction-type"><option value="entrada">Entrada</option><option value="saida">Saída</option></select></label><label>Valor (R$)<input id="transaction-amount" type="number" required min="0.01" step="0.01" placeholder="0,00"></label></div><label>Data<input id="transaction-date" type="date" required></label><div class="dialog-actions"><button type="button" class="button secondary" data-close>Cancelar</button><button class="button primary" value="save">Salvar movimentação</button></div></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
