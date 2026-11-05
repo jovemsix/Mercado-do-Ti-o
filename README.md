@@ -25,3 +25,11 @@ Abra `index.html` em um navegador moderno. Não é necessário instalar dependê
 ## Observação sobre os dados
 
 Os dados ficam no navegador e dispositivo usados para cadastrar. Este protótipo não sincroniza dados entre usuários, não faz cópia de segurança na nuvem e não substitui um sistema contábil ou fiscal. Evite inserir informações financeiras sensíveis em computadores compartilhados.
+
+## Como usar
+
+1. Abra o site do Mercado do Tião.
+2. Na aba **Produtos**, clique em **Novo produto** e informe nome, categoria, quantidade e preço de venda.
+3. Use a busca para localizar produtos cadastrados.
+4. Na aba **Movimentações financeiras**, registre entradas e saídas para acompanhar o saldo.
+5. Os dados ficam salvos no navegador e dispositivo usados.
