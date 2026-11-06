@@ -33,3 +33,4 @@ Os dados ficam no navegador e dispositivo usados para cadastrar. Este protótipo
 3. Use a busca para localizar produtos cadastrados.
 4. Na aba **Movimentações financeiras**, registre entradas e saídas para acompanhar o saldo.
 5. Os dados ficam salvos no navegador e dispositivo usados.
+6. A aplicação foi estruturada como um MVP estático, separado em HTML para a interface, CSS para a apresentação e JavaScript para as interações. O estado de produtos e movimentações é guardado no localStorage do navegador, sem servidor ou dependências externas, o que mantém a execução simples neste protótipo. As telas são atualizadas a partir dos dados carregados e registrados pelo usuário. Essa estrutura atende ao escopo atual; para uso simultâneo em vários dispositivos, seria necessário adicionar armazenamento compartilhado em servidor.
