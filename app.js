@@ -29,3 +29,18 @@ $('product-form').addEventListener('submit',event=>{event.preventDefault();const
 $('transaction-form').addEventListener('submit',event=>{event.preventDefault();state.transactions.push({id:crypto.randomUUID(),description:$('transaction-description').value.trim(),type:$('transaction-type').value,amount:Number($('transaction-amount').value),date:$('transaction-date').value});save();$('transaction-dialog').close();toast('Movimentação registrada');});
 document.addEventListener('click',event=>{const edit=event.target.closest('[data-edit]');if(edit){openProduct(state.products.find(p=>p.id===edit.dataset.edit));return;}const del=event.target.closest('[data-delete-product]');if(del){const p=state.products.find(x=>x.id===del.dataset.deleteProduct);if(p&&confirm(`Excluir o produto "${p.name}"?`)){state.products=state.products.filter(x=>x.id!==p.id);save();toast('Produto excluído');}return;}const tx=event.target.closest('[data-delete-transaction]');if(tx&&confirm('Excluir esta movimentação?')){state.transactions=state.transactions.filter(x=>x.id!==tx.dataset.deleteTransaction);save();toast('Movimentação excluída');}});
 render();
+
+// Exporta a lógica para testes com Node.js; no navegador, a aplicação continua normal.
+if (typeof module !== 'undefined') {
+  module.exports = {
+    money,
+    dateBR,
+    esc,
+    loadState,
+    totals,
+    render,
+    getState: () => state,
+    setState: value => { state = value; },
+    save
+  };
+}

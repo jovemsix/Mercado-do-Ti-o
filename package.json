@@ -1,0 +1,8 @@
+{
+  "name": "mercado-do-tiao",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --experimental-test-coverage --test"
+  }
+}

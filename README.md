@@ -10,7 +10,7 @@ Abra `index.html` em um navegador moderno. Não é necessário instalar dependê
 
 - Cadastro, edição, busca e exclusão de produtos.
 - Registro de quantidade, categoria e preço de venda.
-- Destaque para produtos com cinco unidades ou menos.
+- Destaque para produtos com três unidades ou menos.
 - Registro e exclusão de entradas e saídas financeiras.
 - Resumo de entradas, saídas e saldo calculado a partir dos registros.
 - Salvamento automático no armazenamento local do navegador.
@@ -26,10 +26,12 @@ Abra `index.html` em um navegador moderno. Não é necessário instalar dependê
 
 Os dados ficam no navegador e dispositivo usados para cadastrar. Este protótipo não sincroniza dados entre usuários, não faz cópia de segurança na nuvem e não substitui um sistema contábil ou fiscal. Evite inserir informações financeiras sensíveis em computadores compartilhados.
 
-## Como usar
+## Testes automatizados
 
-1. Abra o site do Mercado do Tião.
-2. Na aba **Produtos**, clique em **Novo produto** e informe nome, categoria, quantidade e preço de venda.
-3. Use a busca para localizar produtos cadastrados.
-4. Na aba **Movimentações financeiras**, registre entradas e saídas para acompanhar o saldo.
-5. Os dados ficam salvos no navegador e dispositivo usados.
+Com Node.js instalado, abra o terminal nesta pasta e execute:
+
+```bash
+npm test
+```
+
+O comando executa os testes unitários e o teste integrado, mostrando o resultado e a cobertura de linhas do `app.js`.
