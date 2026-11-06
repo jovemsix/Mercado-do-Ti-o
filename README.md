@@ -14,6 +14,8 @@ Abra `index.html` em um navegador moderno. Não é necessário instalar dependê
 - Registro e exclusão de entradas e saídas financeiras.
 - Resumo de entradas, saídas e saldo calculado a partir dos registros.
 - Salvamento automático no armazenamento local do navegador.
+- Modo de alto contraste ativável pelo botão no cabeçalho, com preferência salva no dispositivo e estado informado por `aria-pressed`.
+- Indicador de foco visível para navegação por teclado.
 
 ## Publicar no GitHub Pages
 

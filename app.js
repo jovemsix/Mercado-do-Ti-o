@@ -6,6 +6,18 @@ function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)
 function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); render(); }
 function esc(value='') { return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char])); }
 const $ = id => document.getElementById(id);
+const CONTRAST_KEY = 'mercado-do-tiao-high-contrast';
+const contrastToggle = $('contrast-toggle');
+function setHighContrast(enabled) {
+  document.body?.classList.toggle('high-contrast', enabled);
+  contrastToggle.setAttribute?.('aria-pressed', String(enabled));
+  contrastToggle.textContent = `Alto contraste: ${enabled ? 'ligado' : 'desligado'}`;
+  localStorage.setItem(CONTRAST_KEY, String(enabled));
+}
+setHighContrast(localStorage.getItem(CONTRAST_KEY) === 'true');
+contrastToggle.addEventListener('click', () => {
+  setHighContrast(contrastToggle.getAttribute('aria-pressed') !== 'true');
+});
 const today = new Date(); $('today').textContent = today.toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 function totals() { const income=state.transactions.filter(t=>t.type==='entrada').reduce((s,t)=>s+Number(t.amount),0); const expense=state.transactions.filter(t=>t.type==='saida').reduce((s,t)=>s+Number(t.amount),0); return {income,expense,balance:income-expense}; }
 function render() {
